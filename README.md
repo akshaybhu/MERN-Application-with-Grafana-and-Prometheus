@@ -1,94 +1,127 @@
-# Application Setup and Configuration with Log Aggregation
+# Advanced monitoring solution for a MERN application using Grafana and Prometheus
 
 ## Introduction
-This document outlines the setup and configuration process for a MERN stack application integrated with Grafana, Loki, and Promtail for log aggregation and visualization. It provides detailed steps for setting up the front-end, back-end, log collection, and dashboard creation.
-
-## Features
-- MERN stack application with customizable ports for front-end and back-end.
-- Integrated Grafana dashboard for monitoring and visualizing logs.
-- Log aggregation using Loki and Promtail for efficient storage and querying.
-- Scalable and configurable architecture for real-time log insights.
-
-## Prerequisites
-Before proceeding, ensure the following prerequisites are met:
-- A server/VM (e.g., AWS EC2) with Ubuntu or any Linux-based OS.
-- Node.js and npm installed.
-- Grafana installed.
-- Loki and Promtail installed.
-- Basic knowledge of system ports and application configurations.
-
-## Installation
-
-## 1. Clone the Repository
-
-```bash
-git clone https://github.com/your-repository/application.git
-cd application
-```
-
-### Connecting the Backend Code to MongoDB and Hosting the Application
-
-### Steps to Connect the Backend to MongoDB
-
-1. **Navigate to the Backend Directory**:
-   After cloning the Travel Memory application repository on your EC2 instance, navigate to the backend directory:
-   ```bash
-   cd /home/ubuntu/TravelMemory/
-   cd Backend
-   sudo touch .env # Created an environment file to store sensitive information such as the MongoDB URI and port number:
-   nano .env
-   #Pasted the below lines inside .env file
-   #MONGO_URI='mongodb+srv://prasannak:*********@cluster0.7powl.mongodb.net/Travel-Memory-DB'
-   #PORT=3001
-   sudo apt install npm # Installed NPM and Dependencies and installed the necessary Node.js dependencies:
-   npm install
-   node index.js # Start the backend server
-   ```
-   Output on the EC2 inside : Server started at http://localhost:3001
-   Now, went back to AWS console, when to my instance, went to "Security", went inside my security, clicked on edit inbound rules and added the below port details:
-   ```bash
-   custom-TCP TCP 3001 Custom 0.0.0.0/0
-   ```
-     
-   Copied the public IP Address of the EC2 instance, went to the browser and pasted the below url :
-   ```bash
-   http://34.223.88.56:3001/
-   ```
- 
+Advanced monitoring solution for a MERN application using Grafana and Prometheus
 
 
-## 2. Establishing the Connection Between the Frontend and Backend Code Bases
+Create 2 EC2 instances with frontend and backend:
 
-1. Opened a new terminal on the same EC2 instance:
-    ```bash
-    cd /home/ubuntu/TravelMemory/
-    cd Frontend
-    cd src
-    nano url.js
-    ```
 
-2. Added the following lines to `url.js`:
-    ```javascript
-    export const baseUrl = process.env.REACT_APP_BACKEND_URL || "http://34.223.88.56:3001/";
-    ```
-3. The public IP address of the EC2 instance where the backend application is hosted was pasted in the `url.js` file.
-   
-4. Started the frontend application:
-    ```bash
-    cd ..
-    npm start
-    ```
-    
 
-5. Updated Security Group Rules:
-    - Went to the AWS console, navigated to the instance, then to "Security".
-    - Edited the inbound rules and added a new rule for port 3000 and 3001 too.
 
-6. Verified the setup by pasting the following IP address into the browser:
-    ```plaintext
-    http://34.223.88.56:3000/";
-    ```
-![Alt Text](/images/prom-tm.JPG)
+
+Connect to both frontend and backend instances separately and run pre-requireistes:
+
+Connect the backend server and install the below things: - 
+sudo apt update 
+sudo apt install nodejs 
+sudo apt install npm
+Sudo apt install python3-pip
+sudo apt install python3.12-venv
+
+python3 -m venv venv
+source  venv/bin/activate
+sudo apt install python3-pymongo
+sudo apt install -y nginx
+
+
+Clone the repository: https://github.com/akshaybhu/TravelMemory.git
+
+
+
+
+
+Edit file “/etc/nginx/sites-available/default”
+
+
+server {
+        listen 80;
+        listen [::]:80;
+        server_name 44.202.135.69;
+#       root /var/www/example.com;
+#       index index.html;
+        location / {
+                #try_files $uri $uri/ =404;
+                proxy_pass http://localhost:3000;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+
+
+
+sudo npm install
+
+sudo node index.js
+
+Verify the status of the http://backend:3001/Hello
+
+
+
+
+
+
+
+
+Connect to the frontend server. Install prerequisites: 
+sudo apt update -y 
+sudo apt install npm
+Sudo apt install python3-pip
+sudo apt install python3.12-venv
+
+python3 -m venv venv
+source  venv/bin/activate
+sudo apt install python3-pymongo
+sudo apt install -y nginx
+
+
+Clone the repository: https://github.com/akshaybhu/TravelMemory.git
+
+
+
+Edit file “/etc/nginx/sites-available/default”
+
+
+server {
+        listen 80;
+        listen [::]:80;
+        server_name 54.161.141.36;
+#       root /var/www/example.com;
+#       index index.html;
+        location / {
+                #try_files $uri $uri/ =404;
+                proxy_pass http://localhost:3001;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
+}
+
+
+
+sudo npm install
+sudo npm start
+
+
+
+
+4) MongoDB atlas, new project creation on atlas.
+URI below:
+mongodb+srv://akshaythebest:<db_password>@cluster0.vmouipu.mongodb.net/
+
+
+
+
+
+
+
+Login to compass and connect using URI above.
+
 
 ## 3. Install and Configure Grafana
 
