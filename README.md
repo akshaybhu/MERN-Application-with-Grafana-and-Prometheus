@@ -4,14 +4,13 @@
 Advanced monitoring solution for a MERN application using Grafana and Prometheus
 
 
-Create 2 EC2 instances with frontend and backend:
+## Create 2 EC2 instances with frontend and backend:
 
 <img width="619" alt="Screenshot 2025-04-04 at 3 04 27 AM" src="https://github.com/user-attachments/assets/725e79ec-523a-4ba7-8ebb-e4875bb7b248" />
 
 
 
-
-Connect to both frontend and backend instances separately and run pre-requireistes:
+## 2. Connect to both frontend and backend instances separately and run pre-requireistes:
 
 Connect the backend server and install the below things: - 
 sudo apt update 
@@ -63,12 +62,13 @@ Verify the status of the http://backend:3001/Hello
 
 
 
+<img width="890" alt="Screenshot 2025-04-04 at 3 05 44 AM" src="https://github.com/user-attachments/assets/46f99b85-e889-4f21-9fe3-90d98771c98b" />
 
 
 
 
 
-Connect to the frontend server. Install prerequisites: 
+## Connect to the frontend server. Install prerequisites: 
 sudo apt update -y 
 sudo apt install npm
 Sudo apt install python3-pip
@@ -82,6 +82,7 @@ sudo apt install -y nginx
 
 Clone the repository: https://github.com/akshaybhu/TravelMemory.git
 
+<img width="1183" alt="Screenshot 2025-04-04 at 3 06 08 AM" src="https://github.com/user-attachments/assets/12f791a7-613e-4ecb-8949-8ed3c5f96054" />
 
 
 Edit file “/etc/nginx/sites-available/default”
@@ -110,19 +111,22 @@ sudo npm install
 sudo npm start
 
 
+<img width="1197" alt="Screenshot 2025-04-04 at 3 06 16 AM" src="https://github.com/user-attachments/assets/9a1f4029-2ab4-4872-ad55-59949fa16f3a" />
 
 
-4) MongoDB atlas, new project creation on atlas.
+
+##  MongoDB atlas, new project creation on atlas.
 URI below:
 mongodb+srv://akshaythebest:<db_password>@cluster0.vmouipu.mongodb.net/
 
 
-
-
-
+<img width="1107" alt="Screenshot 2025-04-04 at 3 06 44 AM" src="https://github.com/user-attachments/assets/700c0161-658a-4750-8aa1-a2befe56e5f5" />
 
 
 Login to compass and connect using URI above.
+
+<img width="636" alt="Screenshot 2025-04-04 at 3 07 16 AM" src="https://github.com/user-attachments/assets/5b20c1f7-cfc3-432a-9444-4b5e0dffd7a2" />
+
 
 
 ## 3. Install and Configure Grafana
@@ -163,9 +167,9 @@ To change the port (e.g., to 5000):
    sudo systemctl restart grafana-server
    ```
 
-  ![Alt Text](/images/prom-3-grafana-login-page.JPG)
+<img width="1091" alt="Screenshot 2025-04-04 at 3 09 11 AM" src="https://github.com/user-attachments/assets/f7b853c7-24ee-4129-9b5f-2e57d17739bb" />
+<img width="1095" alt="Screenshot 2025-04-04 at 3 09 04 AM" src="https://github.com/user-attachments/assets/3b4ec005-963b-468e-8287-c2996c7e00b0" />
 
-  ![Alt Text](/images/prom-4-grafana-inside.JPG)
 
   
 ## 4. Install and Configure Loki
@@ -323,11 +327,9 @@ Start Loki using the following command:
    ```
    The /metrics endpoint will now expose Prometheus metrics at http://localhost:3000/metrics.
 
- ![Alt Text](/images/prom-1.JPG)
+<img width="845" alt="Screenshot 2025-04-04 at 3 09 29 AM" src="https://github.com/user-attachments/assets/85fac826-c978-4e3a-b5d8-7008866f845a" />
+<img width="838" alt="Screenshot 2025-04-04 at 3 09 23 AM" src="https://github.com/user-attachments/assets/fe4e5569-8a40-44f0-82d6-cb5be654f3ac" />
 
-
- 
- ![Alt Text](/images/prom-2-metrics.JPG)
 
 ## 6. Create a Grafana Dashboard
 Add Loki as a Data Source
@@ -339,9 +341,8 @@ Build a Logs Dashboard
  2. Add a new Logs Panel.
  3. Query logs using labels defined in the Loki configuration (job="mern-logs").
 
- ![Alt Text](/images/prom-3-grafana-login-page.JPG)
+<img width="848" alt="Screenshot 2025-04-04 at 3 10 34 AM" src="https://github.com/user-attachments/assets/fab60f21-d847-456a-94f3-34794073e192" />
 
- ![Alt Text](/images/prom-5-grafana-dashboard.JPG)
 
 ## 7. Testing the Setup
  1. Start the front-end and back-end applications.
