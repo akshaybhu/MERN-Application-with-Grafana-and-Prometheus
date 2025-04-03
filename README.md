@@ -13,6 +13,7 @@ Advanced monitoring solution for a MERN application using Grafana and Prometheus
 ## 2. Connect to both frontend and backend instances separately and run pre-requireistes:
 
 Connect the backend server and install the below things: - 
+   ```
 sudo apt update 
 sudo apt install nodejs 
 sudo apt install npm
@@ -26,7 +27,7 @@ sudo apt install -y nginx
 
 
 Clone the repository: https://github.com/akshaybhu/TravelMemory.git
-
+   ```
 
 <img width="1375" alt="Screenshot 2025-04-04 at 3 04 52 AM" src="https://github.com/user-attachments/assets/66033417-04dd-4121-aacf-dcf6d531bdd3" />
 
@@ -34,13 +35,13 @@ Clone the repository: https://github.com/akshaybhu/TravelMemory.git
 
 Edit file “/etc/nginx/sites-available/default”
 
-
+   ```
 server {
         listen 80;
         listen [::]:80;
         server_name 44.202.135.69;
-#       root /var/www/example.com;
-#       index index.html;
+        root /var/www/example.com;
+        index index.html;
         location / {
                 #try_files $uri $uri/ =404;
                 proxy_pass http://localhost:3000;
@@ -51,7 +52,7 @@ server {
                 proxy_cache_bypass $http_upgrade;
         }
 }
-
+   ```
 
 
 sudo npm install
@@ -69,6 +70,7 @@ Verify the status of the http://backend:3001/Hello
 
 
 ## Connect to the frontend server. Install prerequisites: 
+   ```
 sudo apt update -y 
 sudo apt install npm
 Sudo apt install python3-pip
@@ -81,19 +83,20 @@ sudo apt install -y nginx
 
 
 Clone the repository: https://github.com/akshaybhu/TravelMemory.git
+   ```
 
 <img width="1183" alt="Screenshot 2025-04-04 at 3 06 08 AM" src="https://github.com/user-attachments/assets/12f791a7-613e-4ecb-8949-8ed3c5f96054" />
 
 
 Edit file “/etc/nginx/sites-available/default”
 
-
+   ```
 server {
         listen 80;
         listen [::]:80;
         server_name 54.161.141.36;
-#       root /var/www/example.com;
-#       index index.html;
+        root /var/www/example.com;
+        index index.html;
         location / {
                 #try_files $uri $uri/ =404;
                 proxy_pass http://localhost:3001;
@@ -104,7 +107,7 @@ server {
                 proxy_cache_bypass $http_upgrade;
         }
 }
-
+   ```
 
 
 sudo npm install
