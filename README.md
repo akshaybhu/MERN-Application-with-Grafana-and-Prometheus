@@ -6,6 +6,7 @@ Advanced monitoring solution for a MERN application using Grafana and Prometheus
 
 Create 2 EC2 instances with frontend and backend:
 
+<img width="619" alt="Screenshot 2025-04-04 at 3 04 27 AM" src="https://github.com/user-attachments/assets/725e79ec-523a-4ba7-8ebb-e4875bb7b248" />
 
 
 
@@ -28,6 +29,7 @@ sudo apt install -y nginx
 Clone the repository: https://github.com/akshaybhu/TravelMemory.git
 
 
+<img width="1375" alt="Screenshot 2025-04-04 at 3 04 52 AM" src="https://github.com/user-attachments/assets/66033417-04dd-4121-aacf-dcf6d531bdd3" />
 
 
 
